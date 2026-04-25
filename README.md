@@ -13,4 +13,4 @@ A complete command-line calculator built with Python by Ashraf-Dev-stack.
 ##  How to Run
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Ashraf-Dev-stack/Python-Calculator.git
+   https://github.com/Ashraf-Dev-stack/Python-Calculator.git
