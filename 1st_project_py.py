@@ -21,8 +21,7 @@ slow_print("| Welcome To Calculator App         |\n")
 time.sleep(1)
 slow_print("| Enter First number  :             | ")
 time.sleep(1)
-slow_print("| Enter First number :             | ")
-time.sleep(1)
+
 try:
   num1=float(input())
 except ValueError:
