@@ -9,6 +9,7 @@ Original file is located at
 
 import sys
 import time
+import math
 
 def slow_print(text, delay=0.05):
     for char in text:
@@ -17,59 +18,65 @@ def slow_print(text, delay=0.05):
         time.sleep(delay)
     sys.stdout.write('\n')
     sys.stdout.flush()
-slow_print("| Welcome To Calculator App         |\n")
-time.sleep(1)
-slow_print("| Enter First number  :             | ")
-time.sleep(1)
 
-try:
-  num1=float(input())
-except ValueError:
-  slow_print("please input an integer or Float")
-slow_print("| Choose an operation (+,-,/,*,%,//,**)   | ")
-time.sleep(1)
-operation=(input())
-slow_print("| Enter Second number :             | ")
-time.sleep(1)
-try:
-  num2=float(input())
-except ValueError:
-  slow_print("please input an integer or Float")
+slow_print("| Welcome To Calculator App |")
+time.sleep(0.5)
 
-if operation=="+":
-  result=num1+num2
-  slow_print(f"{num1} + {num2} = {result}")
-  time.sleep(2)
+slow_print("| Choose an operation (+,-,/,*,%,//,**,√) |")
+operation = input().strip()
 
-elif operation=="-":
-  result=num1-num2
-  slow_print(f"{num1} - {num2} = {result}")
+if operation == "√":
+    try:
+        num_for_sqrt = float(input("| Enter the number for square root: "))
+        if num_for_sqrt < 0:
+            slow_print("Error: Cannot calculate square root of a negative number!")
+        else:
+            result = math.sqrt(num_for_sqrt)
+            slow_print(f"Square root of {num_for_sqrt} = {result}")
+    except ValueError:
+        slow_print("Please input an integer or float number.")
 
-elif operation=="*":
-  result=num1*num2
-  slow_print(f"{num1} * {num2} = {result}")
+elif operation in ['+', '-', '*', '/', '%', '//', '**']:
+    try:
+        num1 = float(input("| Enter First number: "))
+        num2 = float(input("| Enter Second number: "))
 
-elif operation=="/": #10/0
-  if num2!=0:
-    result=num1/num2
-    slow_print(f"{num1} / {num2} = {result}")
-  else:
-    slow_print("Can't Division by Zero")
+        if operation == "+":
+            result = num1 + num2
+            slow_print(f"{num1} + {num2} = {result}")
+        elif operation == "-":
+            result = num1 - num2
+            slow_print(f"{num1} - {num2} = {result}")
+        elif operation == "*":
+            result = num1 * num2
+            slow_print(f"{num1} * {num2} = {result}")
+        elif operation == "/":
+            if num2 != 0:
+                result = num1 / num2
+                slow_print(f"{num1} / {num2} = {result}")
+            else:
+                slow_print("Error: Can't divide by zero!")
+        elif operation == "%":
+            if num2 != 0:
+                result = num1 % num2
+                slow_print(f"{num1} % {num2} = {result}")
+            else:
+                slow_print("Error: Can't modulo by zero!")
+        elif operation == "//":
+            if num2 != 0:
+                result = num1 // num2
+                slow_print(f"{num1} // {num2} = {result}")
+            else:
+                slow_print("Error: Can't divide by zero!")
+        elif operation == "**":
+            result = num1 ** num2
+            slow_print(f"{num1} ** {num2} = {result}")
 
-elif operation=="%":
-  result=num1%num2
-  slow_print(f"{num1} % {num2} = {result}")
+    except ValueError:
+        slow_print("Please input an integer or float for both numbers.")
 
-elif operation=="//":
-  if num2!=0:
-    result=num1//num2
-    slow_print(f"{num1} // {num2} = {result}")
-  else:
-    slow_print("Can't Division by Zero")
-
-elif operation=="**":
-  result=num1**num2
-  slow_print(f"{num1} ** {num2} = {result}")
+else:
+    slow_print(f"Invalid Operation {operation}")
 
 else:
   slow_print(f"Invaild Operation {operation}")
